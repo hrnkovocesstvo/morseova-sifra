@@ -52,7 +52,7 @@ namespace morseova_sifra
                 {
                     index = Array.IndexOf(morseova, Convert.ToString(textTODECODE));
                     textt += Convert.ToString(abeceda.ElementAt(index));
-                    //textTODECODE = "";
+                    textTODECODE = "";
                 }
                 else { textTODECODE += textEncoded.Text[i]; };
 
