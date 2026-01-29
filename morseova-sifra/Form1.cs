@@ -20,6 +20,9 @@ namespace morseova_sifra
         string[] abeceda = { "", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
         string[] morseova = { "|", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.." };
 
+        public Boolean blinkpause = false;
+        public String morsecode = "";
+
         private void buttonEncode_Click(object sender, EventArgs e)
         {
             int[] indexes = {};
@@ -59,5 +62,41 @@ namespace morseova_sifra
             }
             textOriginal.Text = textt;
         }
+
+        private void buttonBlink_Click(object sender, EventArgs e)
+        {
+            morsecode = textEncoded.Text.Replace(" ", "");
+            timer1.Start();
+
+            if (blinkpause)
+            {
+                blinkpause = false;
+                buttonBlink.BackColor = Color.Black;
+                timer1.Interval = 200;
+            }
+            else if (morsecode.Equals("")) timer1.Stop();
+            else if (morsecode[0].Equals('.'))
+            {
+                buttonBlink.BackColor = Color.Red;
+                timer1.Interval = 200;
+                morsecode = morsecode.Substring(1);
+                blinkpause = true;
+            }
+            else if (morsecode[0].Equals('-'))
+            {
+                buttonBlink.BackColor = Color.Red;
+                timer1.Interval = 600;
+                morsecode = morsecode.Substring(1);
+                blinkpause = true;
+            }
+            else if (morsecode[0].Equals('|'))
+            { 
+                timer1.Interval = 800;
+                morsecode = morsecode.Substring(1);
+                blinkpause = true;
+            }
+
+        }
     }
 }
+

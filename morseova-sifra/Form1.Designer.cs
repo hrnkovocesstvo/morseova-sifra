@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textOriginal = new System.Windows.Forms.TextBox();
             this.buttonDecode = new System.Windows.Forms.Button();
             this.textEncoded = new System.Windows.Forms.TextBox();
             this.buttonEncode = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonBlink = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textOriginal
@@ -74,11 +77,22 @@
             this.buttonEncode.UseVisualStyleBackColor = true;
             this.buttonEncode.Click += new System.EventHandler(this.buttonEncode_Click);
             // 
+            // buttonBlink
+            // 
+            this.buttonBlink.Location = new System.Drawing.Point(374, 396);
+            this.buttonBlink.Name = "buttonBlink";
+            this.buttonBlink.Size = new System.Drawing.Size(75, 23);
+            this.buttonBlink.TabIndex = 4;
+            this.buttonBlink.Text = "blink";
+            this.buttonBlink.UseVisualStyleBackColor = true;
+            this.buttonBlink.Click += new System.EventHandler(this.buttonBlink_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonBlink);
             this.Controls.Add(this.buttonEncode);
             this.Controls.Add(this.textEncoded);
             this.Controls.Add(this.buttonDecode);
@@ -96,6 +110,8 @@
         private System.Windows.Forms.Button buttonDecode;
         private System.Windows.Forms.TextBox textEncoded;
         private System.Windows.Forms.Button buttonEncode;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button buttonBlink;
     }
 }
 
