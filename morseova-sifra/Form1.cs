@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace morseova_sifra
@@ -65,37 +66,47 @@ namespace morseova_sifra
 
         private void buttonBlink_Click(object sender, EventArgs e)
         {
-            morsecode = textEncoded.Text.Replace(" ", "");
             timer1.Start();
+            Console.WriteLine("blikaj");
+            morsecode = textEncoded.Text;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+            
+        {
+            Console.WriteLine(morsecode);
+            //blnk.BackColor = Color.Black;
+            //timer1.Interval = 1000;
+
 
             if (blinkpause)
             {
+                blnk.BackColor = Color.Black;
+                timer1.Interval = 300;
                 blinkpause = false;
-                buttonBlink.BackColor = Color.Black;
-                timer1.Interval = 200;
             }
             else if (morsecode.Equals("")) timer1.Stop();
             else if (morsecode[0].Equals('.'))
             {
-                buttonBlink.BackColor = Color.Red;
+                blnk.BackColor = Color.Red;
                 timer1.Interval = 200;
                 morsecode = morsecode.Substring(1);
                 blinkpause = true;
             }
             else if (morsecode[0].Equals('-'))
             {
-                buttonBlink.BackColor = Color.Red;
+                blnk.BackColor = Color.Red;
                 timer1.Interval = 600;
                 morsecode = morsecode.Substring(1);
                 blinkpause = true;
             }
             else if (morsecode[0].Equals('|'))
-            { 
+            {
+                blnk.BackColor = Color.Black;
                 timer1.Interval = 800;
                 morsecode = morsecode.Substring(1);
                 blinkpause = true;
             }
-
         }
     }
 }
