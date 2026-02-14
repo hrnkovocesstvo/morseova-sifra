@@ -46,7 +46,6 @@
             this.textOriginal.Name = "textOriginal";
             this.textOriginal.Size = new System.Drawing.Size(297, 147);
             this.textOriginal.TabIndex = 0;
-            this.textOriginal.TextChanged += new System.EventHandler(this.textOriginal_TextChanged);
             // 
             // buttonDecode
             // 
